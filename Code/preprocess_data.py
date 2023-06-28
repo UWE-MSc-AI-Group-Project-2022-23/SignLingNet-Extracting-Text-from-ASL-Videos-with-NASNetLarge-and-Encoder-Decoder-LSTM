@@ -52,41 +52,51 @@ class PreprocessData:
         """
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         return gray_frame
+    
+    def segment(self, input_video):
 
-    def segment(self, frame):
-        """
-        Segment the input frame into distinct regions.
+        desired_frame_interval = 0.5  # Set the desired time interval between frames in seconds
+        frame_rate = input_video.get(cv2.CAP_PROP_FPS)
+        desired_frame_rate = 1 / desired_frame_interval
 
-        Input:
-        - frame: The frame to be segmented.
+        # Calculate the frame skip count to achieve the desired frame rate
+        frame_skip_count = int(frame_rate / desired_frame_rate)
 
-        Output:
-        - Segmented regions of the frame.
-        """
-        # Perform segmentation algorithm of your choice
-        # Example: Apply thresholding to create binary regions
-        _, binary_frame = cv2.threshold(frame, 127, 255, cv2.THRESH_BINARY)
+        frame_count = 0
 
-        # Apply any post-processing or analysis on the segmented regions
+        while input_video.isOpened():
+            ret, frame = input_video.read()
+            
+            if not ret:
+                break
+            
+            # Save the frame or segment as an image or segment
+            cv2.imwrite(f'frame_{frame_count}.jpg', frame)
+            
+            frame_count += 1
+            
+            # Skip frames based on the frame skip count
+            for _ in range(frame_skip_count - 1):
+                input_video.read()
 
-        return binary_frame
+        input_video.release()
+        cv2.destroyAllWindows()
 
-    def annotate_roi(self, frame, regions):
-        """
-        Annotate the regions of interest in the input frame using the provided regions.
+    # def detect_object(self, frame, object_classifier):
 
-        Input:
-        - frame: The frame to be annotated.
-        - regions: List of regions of interest.
+    #     # Convert the frame to the HSV color space
+    #     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-        Output:
-        - Annotated frame with regions of interest.
-        """
-        annotated_frame = frame.copy()
+    #     # Define the lower and upper bounds of the skin color in HSV
+    #     lower_skin = np.array([0, 20, 70], dtype=np.uint8)
+    #     upper_skin = np.array([20, 255, 255], dtype=np.uint8)
 
-        # Draw rectangles around the regions of interest
-        for region in regions:
-            x, y, w, h = region
-            cv2.rectangle(annotated_frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    #     # Create a binary mask of the skin color regions
+    #     skin_mask = cv2.inRange(hsv_frame, lower_skin, upper_skin)
 
-        return annotated_frame
+    #     # Perform morphological operations to refine the mask
+    #     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+    #     skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel)
+
+    #     # Apply the mask to the original frame
+    #     masked_frame = cv2.bitwise_and(frame, frame, mask=skin_mask)
