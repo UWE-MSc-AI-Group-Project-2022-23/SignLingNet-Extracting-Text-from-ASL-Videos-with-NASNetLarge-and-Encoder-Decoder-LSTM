@@ -1,12 +1,11 @@
 import cv2
 
-class PreprocessData:
+class DataPreprocessing:
     """
     A class for performing various data preprocessing operations.
     """
 
     def __init__(self):
-        # Initialize any required variables or resources here
         pass
 
     def resize(self, frame, width, height):
@@ -81,22 +80,3 @@ class PreprocessData:
 
         input_video.release()
         cv2.destroyAllWindows()
-
-    # def detect_object(self, frame, object_classifier):
-
-    #     # Convert the frame to the HSV color space
-    #     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-    #     # Define the lower and upper bounds of the skin color in HSV
-    #     lower_skin = np.array([0, 20, 70], dtype=np.uint8)
-    #     upper_skin = np.array([20, 255, 255], dtype=np.uint8)
-
-    #     # Create a binary mask of the skin color regions
-    #     skin_mask = cv2.inRange(hsv_frame, lower_skin, upper_skin)
-
-    #     # Perform morphological operations to refine the mask
-    #     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-    #     skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel)
-
-    #     # Apply the mask to the original frame
-    #     masked_frame = cv2.bitwise_and(frame, frame, mask=skin_mask)
