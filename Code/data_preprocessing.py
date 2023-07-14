@@ -21,8 +21,12 @@ class DataPreprocessing:
         Output:
         - Resized frame.
         """
-        resized_frame = cv2.resize(frame, (width, height))
-        return resized_frame
+        try:
+            resized_frame = cv2.resize(frame, (width, height))
+            return resized_frame
+        except Exception as e:
+            print("Error occurred during resizing: ", str(e))
+            return None
 
     def crop(self, frame, x, y, width, height):
         """
@@ -35,8 +39,12 @@ class DataPreprocessing:
             width (int): Width of the region.
             height (int): Height of the region.
         """
-        cropped_frame = frame[y:y+height, x:x+width, :]
-        return cropped_frame
+        try:
+            cropped_frame = frame[y:y+height, x:x+width, :]
+            return cropped_frame
+        except Exception as e:
+            print("Error occurred during cropping: ", str(e))
+            return None
 
     def reduce_noise(self, frame, h, templateWindowSize, searchWindowSize):
         """
@@ -51,8 +59,12 @@ class DataPreprocessing:
         Output:
         - Frame with reduced noise.
         """
-        denoised_frame = cv2.fastNlMeansDenoising(frame, None, h, templateWindowSize, searchWindowSize)
-        return denoised_frame
+        try:
+            denoised_frame = cv2.fastNlMeansDenoising(frame, None, h, templateWindowSize, searchWindowSize)
+            return denoised_frame
+        except Exception as e:
+            print("Error occurred during noise reduction: ", str(e))
+            return None
 
     def add_noise(self, frame, noise_type='gaussian', mean=0, std=1):
         """
@@ -67,24 +79,28 @@ class DataPreprocessing:
         Returns:
             ndarray: Frame with added noise.
         """
-        noisy_frame = np.copy(frame)
+        try:
+            noisy_frame = np.copy(frame)
 
-        if noise_type == 'gaussian':
-            noise = np.random.normal(mean, std, frame.shape).astype(np.uint8)
-            noisy_frame = cv2.add(frame, noise)
+            if noise_type == 'gaussian':
+                noise = np.random.normal(mean, std, frame.shape).astype(np.uint8)
+                noisy_frame = cv2.add(frame, noise)
 
-        elif noise_type == 'salt-and-pepper':
-            prob = 0.05
-            mask = np.random.random(frame.shape[:2]) < prob / 2
-            noisy_frame[mask] = 0
+            elif noise_type == 'salt-and-pepper':
+                prob = 0.05
+                mask = np.random.random(frame.shape[:2]) < prob / 2
+                noisy_frame[mask] = 0
 
-            mask = np.random.random(frame.shape[:2]) < prob / 2
-            noisy_frame[mask] = 255
+                mask = np.random.random(frame.shape[:2]) < prob / 2
+                noisy_frame[mask] = 255
 
-        elif noise_type == 'poisson':
-            noisy_frame = np.random.poisson(frame.astype(np.float32))
+            elif noise_type == 'poisson':
+                noisy_frame = np.random.poisson(frame.astype(np.float32))
 
-        return noisy_frame
+            return noisy_frame
+        except Exception as e:
+            print("Error occurred during noise addition: ", str(e))
+            return None
 
     def spatial_transformation(self, frame, rotation_angle, flip_horizontal, flip_vertical):
         """
@@ -99,20 +115,24 @@ class DataPreprocessing:
         Returns:
             ndarray: Transformed frame.
         """
-        transformed_frame = frame
+        try:
+            transformed_frame = frame
 
-        if rotation_angle != 0:
-            rows, cols, _ = frame.shape
-            M = cv2.getRotationMatrix2D((cols / 2, rows / 2), rotation_angle, 1)
-            transformed_frame = cv2.warpAffine(frame, M, (cols, rows))
-        
-        if flip_horizontal:
-            transformed_frame = cv2.flip(transformed_frame, 1)
-        
-        if flip_vertical:
-            transformed_frame = cv2.flip(transformed_frame, 0)
-        
-        return transformed_frame
+            if rotation_angle != 0:
+                rows, cols, _ = frame.shape
+                M = cv2.getRotationMatrix2D((cols / 2, rows / 2), rotation_angle, 1)
+                transformed_frame = cv2.warpAffine(frame, M, (cols, rows))
+
+            if flip_horizontal:
+                transformed_frame = cv2.flip(transformed_frame, 1)
+
+            if flip_vertical:
+                transformed_frame = cv2.flip(transformed_frame, 0)
+
+            return transformed_frame
+        except Exception as e:
+            print("Error occurred during spatial transformation: ", str(e))
+            return None
     
     def color_jitter(self, video, brightness=0, contrast=0, saturation=0, hue=0):
         """
@@ -128,30 +148,34 @@ class DataPreprocessing:
         Returns:
             ndarray: Color jittered video frames.
         """
-        num_frames = video.shape[0]
-        adjusted_frames = []
-        
-        for i in range(num_frames):
-            frame = video[i].astype(np.float32) / 255.0
-            
-            if brightness != 0:
-                frame = cv2.add(frame, brightness)
-            
-            if contrast != 0:
-                frame = cv2.multiply(frame, contrast)
-            
-            if saturation != 0:
-                frame = cv2.multiply(frame, saturation)
-            
-            if hue != 0:
-                frame = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
-                frame[:, :, 0] += hue
-                frame = cv2.cvtColor(frame, cv2.COLOR_HSV2RGB)
-            
-            frame = np.clip(frame * 255.0, 0, 255).astype(np.uint8)
-            adjusted_frames.append(frame)
-        
-        return np.array(adjusted_frames)
+        try:
+            num_frames = video.shape[0]
+            adjusted_frames = []
+
+            for i in range(num_frames):
+                frame = video[i].astype(np.float32) / 255.0
+
+                if brightness != 0:
+                    frame = cv2.add(frame, brightness)
+
+                if contrast != 0:
+                    frame = cv2.multiply(frame, contrast)
+
+                if saturation != 0:
+                    frame = cv2.multiply(frame, saturation)
+
+                if hue != 0:
+                    frame = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+                    frame[:, :, 0] += hue
+                    frame = cv2.cvtColor(frame, cv2.COLOR_HSV2RGB)
+
+                frame = np.clip(frame * 255.0, 0, 255).astype(np.uint8)
+                adjusted_frames.append(frame)
+
+            return np.array(adjusted_frames)
+        except Exception as e:
+            print("Error occurred during color jittering: ", str(e))
+            return None
 
 
     def grey_scale(self, frame):
@@ -164,5 +188,9 @@ class DataPreprocessing:
         Output:
         - Grayscale frame.
         """
-        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        return gray_frame
+        try:
+            gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            return gray_frame
+        except Exception as e:
+            print("Error occurred during grayscale conversion: ", str(e))
+            return None
