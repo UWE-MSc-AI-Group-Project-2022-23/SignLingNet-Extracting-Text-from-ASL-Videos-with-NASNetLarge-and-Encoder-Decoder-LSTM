@@ -1,15 +1,32 @@
 import numpy as np
-import tensorflow.keras.applications.nasnet as nasnet
 
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.nasnet import preprocess_input
+from keras.applications.nasnet import NASNetLarge, NASNetMobile
 
-def extract_frame_features(frame):
-    img = image.img_to_array(frame)
-    img = np.expand_dims(img, axis=0)
-    img = preprocess_input(img)
+class NASNetFeatureExtractor:
+    def __init__(self, model_type='large'):
+        """
+        Initialize the NASNet feature extractor.
 
-    base_model = nasnet.NASNetLarge(weights='imagenet')
-    features = base_model.predict(img)
+        Args:
+            model_type (str): Type of NASNet model to use. Options: 'large' or 'mobile'.
+        """
+        if model_type.lower() == 'large':
+            self.model = NASNetLarge(weights='imagenet')
+        elif model_type.lower() == 'mobile':
+            self.model = NASNetMobile(weights='imagenet')
+        else:
+            raise ValueError("Invalid model_type. Options are 'large' or 'mobile'.")
 
-    return features.flatten()
+    def extract_features_from_frame(self, frame):
+        """
+        Extract features from an frame.
+
+        Args:
+            frame (str): Frame.
+
+        Returns:
+            ndarray: Feature representation of the image.
+        """
+        x = np.expand_dims(frame, axis=0)
+        features = self.model.predict(x)
+        return features.flatten()
