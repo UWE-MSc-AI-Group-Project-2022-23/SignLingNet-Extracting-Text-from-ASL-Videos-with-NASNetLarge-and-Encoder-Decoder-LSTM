@@ -1,25 +1,95 @@
 import cv2
 import numpy as np
 
-class DataPreprocessing:
+class DataPreprocessor:
     """
-    A class for performing various data preprocessing operations.
+    A class for performing various data preprocessing operations on video frames.
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, resize_width, resize_height):
+        """
+        Initialize the DataPreprocessing object.
+
+        Args:
+            resize_width (int): The desired width for frame resizing.
+            resize_height (int): The desired height for frame resizing.
+        """
+        self.resize_width = resize_width
+        self.resize_height = resize_height
+
+    def process_frame(self, frame, step):
+        """
+        Process a video frame based on the specified preprocessing step.
+
+        Args:
+            frame (ndarray): The video frame to be processed.
+            step (str): The name of the preprocessing step to apply.
+
+        Returns:
+            ndarray: The processed video frame.
+        """
+        try:
+            # Resize frame
+            processed_frame = self.resize(frame, self.resize_width, self.resize_height)
+
+            # Perform the respective processing step on frames
+            if step == "crop":
+                processed_frame = self.crop(frame, 300, 0, 680, 720)
+                processed_frame = self.resize(processed_frame, self.resize_width, self.resize_height)
+
+            elif step == "reduce_noise":
+                processed_frame = self.reduce_noise(processed_frame, h=10, templateWindowSize=7,
+                                                            searchWindowSize=21)
+
+            elif step == "add_noise":
+                processed_frame = self.add_noise(processed_frame, noise_type='gaussian', mean=0, std=1)
+
+            elif step == "rotate":
+                processed_frame = self.spatial_transformation(processed_frame, rotation_angle=90,
+                                                                    flip_horizontal=False,
+                                                                    flip_vertical=False)
+
+            elif step == "flip_horizontal":
+                processed_frame = self.spatial_transformation(processed_frame, rotation_angle=0,
+                                                                    flip_horizontal=True,
+                                                                    flip_vertical=False)
+
+            elif step == "flip_vertical":
+                processed_frame = self.spatial_transformation(processed_frame, rotation_angle=0,
+                                                                    flip_horizontal=False,
+                                                                    flip_vertical=True)
+
+            elif step == "brightness":
+                processed_frame = self.color_jitter(processed_frame, brightness=0.5, contrast=1.0,
+                                                            saturation=1.0, hue=0.0)
+
+            elif step == "contrast":
+                processed_frame = self.color_jitter(processed_frame, brightness=0.0, contrast=1.5,
+                                                            saturation=1.0, hue=0.0)
+
+            elif step == "saturation":
+                processed_frame = self.color_jitter(processed_frame, brightness=0.0, contrast=1.0,
+                                                            saturation=1.5, hue=0.0)
+
+            elif step == "greyscale":
+                processed_frame = self.grey_scale(processed_frame)
+            
+            return processed_frame
+        except Exception as e:
+            print(f"Error occurred during {step} preprocessing: {str(e)}")
+            return None
 
     def resize(self, frame, width, height):
         """
         Resize the input frame.
 
-        Input:
-        - frame: The frame to be resized.
-        - width: The desired width of the resized frame.
-        - height: The desired height of the resized frame.
+        Args:
+            frame (ndarray): The frame to be resized.
+            width (int): The desired width of the resized frame.
+            height (int): The desired height of the resized frame.
 
-        Output:
-        - Resized frame.
+        Returns:
+            ndarray: The resized frame.
         """
         try:
             resized_frame = cv2.resize(frame, (width, height))
@@ -30,14 +100,17 @@ class DataPreprocessing:
 
     def crop(self, frame, x, y, width, height):
         """
-        Crop a rectangular region from the input frame and save it as an image file.
-        
+        Crop a rectangular region from the input frame.
+
         Args:
             frame (ndarray): Input frame as a numpy array.
             x (int): X-coordinate of the top-left corner of the region.
             y (int): Y-coordinate of the top-left corner of the region.
             width (int): Width of the region.
             height (int): Height of the region.
+
+        Returns:
+            ndarray: Cropped frame.
         """
         try:
             cropped_frame = frame[y:y+height, x:x+width, :]
@@ -50,14 +123,14 @@ class DataPreprocessing:
         """
         Apply non-local means denoising technique to the input frame.
 
-        Input:
-        - frame: The frame to have noise reduced.
-        - h: The parameter regulating filter strength. Higher h value preserves more details, but may result in less noise reduction.
-        - templateWindowSize: Size in pixels of the template patch that is used to compute weights. Should be an odd value.
-        - searchWindowSize: Size in pixels of the window that is used to compute weighted average for given pixel. Should be an odd value.
+        Args:
+            frame (ndarray): The frame to have noise reduced.
+            h (int): The parameter regulating filter strength. Higher h value preserves more details, but may result in less noise reduction.
+            templateWindowSize (int): Size in pixels of the template patch that is used to compute weights. Should be an odd value.
+            searchWindowSize (int): Size in pixels of the window that is used to compute weighted average for a given pixel. Should be an odd value.
 
-        Output:
-        - Frame with reduced noise.
+        Returns:
+            ndarray: Frame with reduced noise.
         """
         try:
             denoised_frame = cv2.fastNlMeansDenoising(frame, None, h, templateWindowSize, searchWindowSize)
@@ -105,13 +178,13 @@ class DataPreprocessing:
     def spatial_transformation(self, frame, rotation_angle, flip_horizontal, flip_vertical):
         """
         Apply spatial transformations to the input frame.
-        
+
         Args:
             frame (ndarray): Input frame as a numpy array.
             rotation_angle (float): Rotation angle in degrees.
             flip_horizontal (bool): Flag indicating horizontal flipping.
             flip_vertical (bool): Flag indicating vertical flipping.
-            
+
         Returns:
             ndarray: Transformed frame.
         """
@@ -137,14 +210,14 @@ class DataPreprocessing:
     def color_jitter(self, video, brightness=0, contrast=0, saturation=0, hue=0):
         """
         Apply color jittering to the video frames.
-        
+
         Args:
             video (ndarray): Input video frames.
             brightness (float): Brightness adjustment factor.
             contrast (float): Contrast adjustment factor.
             saturation (float): Saturation adjustment factor.
             hue (float): Hue adjustment factor.
-            
+
         Returns:
             ndarray: Color jittered video frames.
         """
@@ -182,11 +255,11 @@ class DataPreprocessing:
         """
         Convert the input frame to grayscale.
 
-        Input:
-        - frame: The frame to be converted to grayscale.
+        Args:
+            frame (ndarray): The frame to be converted to grayscale.
 
-        Output:
-        - Grayscale frame.
+        Returns:
+            ndarray: Grayscale frame.
         """
         try:
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
