@@ -1,23 +1,21 @@
 import numpy as np
 
-from keras.applications.nasnet import NASNetLarge, NASNetMobile
+from keras.applications.nasnet import NASNetLarge
+from keras.models import Model
 
 class NASNetFeatureExtractor:
-    def __init__(self, model_type='large'):
+    def __init__(self):
         """
         Initialize the NASNet feature extractor.
 
-        Args:
-            model_type (str): Type of NASNet model to use. Options: 'large' or 'mobile'.
         """
-        if model_type.lower() == 'large':
-            self.model = NASNetLarge(weights='imagenet')
-        elif model_type.lower() == 'mobile':
-            self.model = NASNetMobile(weights='imagenet')
-        else:
-            raise ValueError("Invalid model_type. Options are 'large' or 'mobile'.")
+        # Load the full pre-trained model
+        full_model = NASNetLarge(weights='imagenet', include_top=True)
 
-    def extract_features_from_frame(self, frame):
+        # Create a new model that includes all layers of the full model up to the last convolutional layer
+        self.model = Model(inputs=full_model.input, outputs=full_model.get_layer('normal_concat_18').output)
+
+    def extract_from_frame(self, frame):
         """
         Extract features from an frame.
 
@@ -29,4 +27,4 @@ class NASNetFeatureExtractor:
         """
         x = np.expand_dims(frame, axis=0)
         features = self.model.predict(x)
-        return features.flatten()
+        return features.flatten().tolist()

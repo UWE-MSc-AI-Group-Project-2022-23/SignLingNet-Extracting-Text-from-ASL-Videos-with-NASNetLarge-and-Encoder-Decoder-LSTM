@@ -1,5 +1,12 @@
 import cv2
+import os
+import pickle
 import numpy as np
+import keras.applications.nasnet as nasnet
+
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
 
 class DataPreprocessor:
     """
@@ -73,6 +80,9 @@ class DataPreprocessor:
 
             elif step == "greyscale":
                 processed_frame = self.grey_scale(processed_frame)
+            
+            else:
+                processed_frame = nasnet.preprocess_input(processed_frame)
             
             return processed_frame
         except Exception as e:
@@ -250,7 +260,6 @@ class DataPreprocessor:
             print("Error occurred during color jittering: ", str(e))
             return None
 
-
     def grey_scale(self, frame):
         """
         Convert the input frame to grayscale.
@@ -267,3 +276,57 @@ class DataPreprocessor:
         except Exception as e:
             print("Error occurred during grayscale conversion: ", str(e))
             return None
+
+    def process_sentences(self, input_sentences: list, output_folder, max_vocab_size=10000):
+        """
+        Preprocesses a list of input sentences for sequence-to-sequence modeling.
+
+        Args:
+            input_sentences (list): A list of input sentences (text).
+            output_folder (str): The output folder where the preprocessed data will be saved.
+            max_vocab_size (int): The maximum vocabulary size for the Tokenizer.
+
+        Returns:
+            numpy.ndarray: Preprocessed sequences of integers.
+
+        Raises:
+            ValueError: If 'input_sentences' is empty or not a list.
+            OSError: If there is an error while creating the output directory or saving the tokenizer.
+        """
+        if not isinstance(input_sentences, list) or len(input_sentences) == 0:
+            raise ValueError("Invalid input. 'input_sentences' must be a non-empty list of sentences.")
+
+        try:
+            # Instantiate a Tokenizer
+            tokenizer = Tokenizer(num_words=max_vocab_size, oov_token='<UNK>')
+
+            # Fit it on your sentences
+            tokenizer.fit_on_texts(input_sentences)
+
+            # Convert sentences to sequences of integers
+            sequences = tokenizer.texts_to_sequences(input_sentences)
+
+            # Find the maximum length of sequences
+            max_seq_length = max([len(seq) for seq in sequences])
+
+            # Pad sequences
+            sequences = pad_sequences(sequences, maxlen=max_seq_length, padding='post')
+
+            # Create target sequences
+            targets = np.zeros_like(sequences)
+            targets[:, :-1] = sequences[:, 1:]
+
+            # Create start token for decoder input
+            start_tokens = np.zeros_like(sequences[:, :1])
+            decoder_inputs = np.concatenate([start_tokens, sequences[:, :-1]], axis=1)
+
+            # Save the tokenizer for later use
+            output_tokenizer_file = os.path.join(output_folder, 'tokenizer.pickle')
+            with open(output_tokenizer_file, 'wb') as handle:
+                pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+            return sequences
+        
+        except OSError as e:
+            # Handle OSError (e.g., error in creating the output directory or saving the tokenizer)
+            raise OSError(f"Error occurred while processing sentences: {str(e)}") from e
