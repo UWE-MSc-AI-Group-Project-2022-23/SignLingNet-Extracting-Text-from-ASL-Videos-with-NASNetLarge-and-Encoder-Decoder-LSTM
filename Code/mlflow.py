@@ -3,6 +3,7 @@ import os
 import math
 import json
 import random
+import pandas as pd
 
 from data_preprocessor import DataPreprocessor
 from feature_extractor import NASNetFeatureExtractor
@@ -58,7 +59,7 @@ class MLFlow:
                 data = json.load(json_file)
 
             # Preprocess sentences related to the videos
-            preprocessed_sentences = self.process_sentences(data)
+            preprocessed_sentences = self.process_labels(data)
 
             # Calculate the number of videos per step (if processing_steps provided)
             if self.processing_steps:
@@ -69,8 +70,12 @@ class MLFlow:
                 # Shuffle the processing steps to randomize video processing order
                 random.shuffle(self.processing_steps)
 
+            vectors_df = pd.DataFrame(columns=["video_name", "features", "labels"])
+
             # Process videos in the input folder
             for i, file in enumerate(data):
+                if i >= 2:
+                    break
                 video_path = file["SENTENCE_FILE_PATH"]
                 video_name = file["SENTENCE_NAME"]
                 video_description = preprocessed_sentences[video_name]
@@ -84,16 +89,11 @@ class MLFlow:
                     step = self.processing_steps[step_idx]
                     output_dir = self.output_dirs[step_idx]
 
-                # Create a subdirectory for the current video within the processing step directory
-                video_dir = os.path.join(output_dir, video_name)
-
                 # Open the input video using OpenCV
                 cap = cv2.VideoCapture(video_path)
 
                 # Process frames in the video
-                video_features = (
-                    []
-                )  # Initialize the list to store features for the entire video
+                video_features = []
                 while cap.isOpened():
                     ret, frame = cap.read()
                     if not ret:
@@ -119,27 +119,26 @@ class MLFlow:
                 # Release the video capture
                 cap.release()
 
-                # Create the output JSON for the video
-                output_json = {
+                # Append to feature_vectors_df and labels_df using .loc
+                vectors_df.loc[len(vectors_df)] = {
                     "video_name": video_name,
-                    "video_description": video_description,
-                    "video_features": video_features,
+                    "features": video_features,
+                    "labels": video_description
                 }
 
-                # Write the output JSON to a file
-                with open(video_dir + ".json", "w") as f:
-                    json.dump(output_json, f)
-                break
+            vectors_df.to_json(output_dir + "vectors.json")
 
             # Video processing completed
             print("Video processing completed.")
+
+            return vectors_df
 
         except Exception as e:
             # Handle any errors during video processing
             print(f"Error occurred during video processing: {str(e)}")
             raise
 
-    def process_sentences(self, data: list) -> dict:
+    def process_labels(self, data: list) -> dict:
         """
         Preprocesses a list of sentences and returns a dictionary mapping sentence names to their preprocessed sequences.
 
@@ -155,7 +154,7 @@ class MLFlow:
             sentence_names = [item["SENTENCE_NAME"] for item in data]
 
             # Preprocess sentences using the data_preprocessor object
-            sequences = self.data_preprocessor.process_sentences(
+            sequences = self.data_preprocessor.process_labels(
                 sentences, self.output_folder
             )
 
@@ -176,9 +175,9 @@ class MLFlow:
             ) from e
 
         except AttributeError as e:
-            # Handle AttributeError if 'data_preprocessor' object doesn't have 'process_sentences' method
+            # Handle AttributeError if 'data_preprocessor' object doesn't have 'process_labels' method
             raise AttributeError(
-                "'data_preprocessor' object must have 'process_sentences' method."
+                "'data_preprocessor' object must have 'process_labels' method."
             ) from e
 
         except Exception as e:

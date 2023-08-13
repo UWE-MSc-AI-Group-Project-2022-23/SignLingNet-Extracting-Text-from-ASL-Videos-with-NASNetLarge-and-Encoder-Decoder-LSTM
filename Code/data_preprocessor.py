@@ -335,7 +335,7 @@ class DataPreprocessor:
             print("Error occurred during grayscale conversion: ", str(e))
             return None
 
-    def process_sentences(
+    def process_labels(
         self,
         input_sentences: List[str],
         output_folder: str,
