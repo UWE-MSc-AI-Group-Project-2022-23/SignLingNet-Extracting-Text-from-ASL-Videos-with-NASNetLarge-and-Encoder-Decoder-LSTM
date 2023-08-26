@@ -4,6 +4,7 @@ import math
 import json
 import random
 import pandas as pd
+import numpy as np
 
 from data_preprocessor import DataPreprocessor
 from feature_extractor import NASNetFeatureExtractor
@@ -74,8 +75,6 @@ class MLFlow:
 
             # Process videos in the input folder
             for i, file in enumerate(data):
-                if i >= 2:
-                    break
                 video_path = file["SENTENCE_FILE_PATH"]
                 video_name = file["SENTENCE_NAME"]
                 video_description = preprocessed_sentences[video_name]
@@ -92,8 +91,11 @@ class MLFlow:
                 # Open the input video using OpenCV
                 cap = cv2.VideoCapture(video_path)
 
+                path = os.path.join(output_dir, 'features', video_name)
+
                 # Process frames in the video
                 video_features = []
+                processed_frames = []
                 while cap.isOpened():
                     ret, frame = cap.read()
                     if not ret:
@@ -104,14 +106,9 @@ class MLFlow:
                         processed_frame = self.data_preprocessor.process_frame(
                             frame, step
                         )
-                        features = self.feature_extractor.extract_from_frame(
-                            processed_frame
-                        )
 
-                        # Add the features to the list of video features
-                        video_features.extend(
-                            features
-                        )  # Extend the list with features of the current frame
+                        processed_frames.append(processed_frame)
+                        
 
                     except Exception as e:
                         print(f"Error occurred during frame processing: {str(e)}")
@@ -119,14 +116,20 @@ class MLFlow:
                 # Release the video capture
                 cap.release()
 
+                for frame in processed_frames:
+
+                    features = self.feature_extractor.extract_from_frame(processed_frame)
+
+                    video_features.append(features)
+
                 # Append to feature_vectors_df and labels_df using .loc
                 vectors_df.loc[len(vectors_df)] = {
                     "video_name": video_name,
                     "features": video_features,
                     "labels": video_description
                 }
-
-            vectors_df.to_json(output_dir + "vectors.json")
+                print(path)
+                np.save(path, video_features)
 
             # Video processing completed
             print("Video processing completed.")
@@ -203,6 +206,8 @@ class MLFlow:
             else:
                 # Create the main output folder if no processing steps are specified
                 os.makedirs(self.output_folder, exist_ok=True)
+                features_path = os.path.join(self.output_folder, 'features')
+                os.makedirs(features_path, exist_ok=True)
         except OSError as e:
             # Handle OSError (e.g., file exists, permission denied) during directory creation
             raise OSError(

@@ -1,0 +1,702 @@
+[
+    {
+        "SENTENCE_ID": "--8pSDeC-fg_1",
+        "SENTENCE_NAME": "--8pSDeC-fg_1-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "My name is Dr. Art Bowler.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--8pSDeC-fg_1-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.12
+    },
+    {
+        "SENTENCE_ID": "--8pSDeC-fg_11",
+        "SENTENCE_NAME": "--8pSDeC-fg_11-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "If so you have high self esteem.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--8pSDeC-fg_11-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "--8pSDeC-fg_5",
+        "SENTENCE_NAME": "--8pSDeC-fg_5-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "But fortunately it's very fixable.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--8pSDeC-fg_5-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 3.0
+    },
+    {
+        "SENTENCE_ID": "--8pSDeC-fg_7",
+        "SENTENCE_NAME": "--8pSDeC-fg_7-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "How do you feel about yourself?",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--8pSDeC-fg_7-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.04
+    },
+    {
+        "SENTENCE_ID": "--dANj_01AU_10",
+        "SENTENCE_NAME": "--dANj_01AU_10-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "I lift it up enough to make sure that I'm comfortable.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--dANj_01AU_10-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "--dANj_01AU_11",
+        "SENTENCE_NAME": "--dANj_01AU_11-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Come back and forth.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--dANj_01AU_11-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.04
+    },
+    {
+        "SENTENCE_ID": "--dANj_01AU_16",
+        "SENTENCE_NAME": "--dANj_01AU_16-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Be very mindful of that.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--dANj_01AU_16-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "--dANj_01AU_19",
+        "SENTENCE_NAME": "--dANj_01AU_19-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Back and forth.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--dANj_01AU_19-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.21
+    },
+    {
+        "SENTENCE_ID": "--dANj_01AU_5",
+        "SENTENCE_NAME": "--dANj_01AU_5-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "So we're going to start with the inside leg first.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/--dANj_01AU_5-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "-06_nJnhORg_19",
+        "SENTENCE_NAME": "-06_nJnhORg_19-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "And, so, that was kind of tough.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-06_nJnhORg_19-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.88
+    },
+    {
+        "SENTENCE_ID": "-06_nJnhORg_9",
+        "SENTENCE_NAME": "-06_nJnhORg_9-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "One of my toughest days are Thursdays.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-06_nJnhORg_9-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.67
+    },
+    {
+        "SENTENCE_ID": "-0FA6OhxZSE_11",
+        "SENTENCE_NAME": "-0FA6OhxZSE_11-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "And so, that's squeegeeing the second color.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-0FA6OhxZSE_11-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-0JdYlTf9Y8_11",
+        "SENTENCE_NAME": "-0JdYlTf9Y8_11-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "It's really, what you get for your dollar.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-0JdYlTf9Y8_11-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.58
+    },
+    {
+        "SENTENCE_ID": "-0JdYlTf9Y8_3",
+        "SENTENCE_NAME": "-0JdYlTf9Y8_3-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "This is a forty-eight inch trophy.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-0JdYlTf9Y8_3-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.33
+    },
+    {
+        "SENTENCE_ID": "-0ZqnVFv7eI_0",
+        "SENTENCE_NAME": "-0ZqnVFv7eI_0-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "This is Robert Stewart, with Hill13.com.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-0ZqnVFv7eI_0-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.63
+    },
+    {
+        "SENTENCE_ID": "-1KpdDGPCq4_1",
+        "SENTENCE_NAME": "-1KpdDGPCq4_1-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Let's go ahead and put some ice in a glass.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1KpdDGPCq4_1-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.25
+    },
+    {
+        "SENTENCE_ID": "-1PeVdIwiq0_1",
+        "SENTENCE_NAME": "-1PeVdIwiq0_1-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Today we're going to be talking about buying a new car.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1PeVdIwiq0_1-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.29
+    },
+    {
+        "SENTENCE_ID": "-1PeVdIwiq0_2",
+        "SENTENCE_NAME": "-1PeVdIwiq0_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "In this segment we're talk about negotiating on a new car.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1PeVdIwiq0_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.92
+    },
+    {
+        "SENTENCE_ID": "-1PeVdIwiq0_25",
+        "SENTENCE_NAME": "-1PeVdIwiq0_25-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Remember, don't be afraid to ask.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1PeVdIwiq0_25-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.04
+    },
+    {
+        "SENTENCE_ID": "-1Uik-vwQoc_4",
+        "SENTENCE_NAME": "-1Uik-vwQoc_4-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "These are the colors that were in his collar.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1Uik-vwQoc_4-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.54
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_10",
+        "SENTENCE_NAME": "-1XUnputrgk_10-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Feel free to get the.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_10-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.34
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_12",
+        "SENTENCE_NAME": "-1XUnputrgk_12-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "You can get them at Home Depot or Lowes.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_12-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_13",
+        "SENTENCE_NAME": "-1XUnputrgk_13-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "And they're actually called painters masks.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_13-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_15",
+        "SENTENCE_NAME": "-1XUnputrgk_15-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "But they're very affordable.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_15-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.34
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_17",
+        "SENTENCE_NAME": "-1XUnputrgk_17-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "So make sure you.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_17-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.13
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_19",
+        "SENTENCE_NAME": "-1XUnputrgk_19-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "You know, it protects your health when you're cleaning.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_19-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.29
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_7",
+        "SENTENCE_NAME": "-1XUnputrgk_7-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Especially you know when, I'm pregnant.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_7-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.75
+    },
+    {
+        "SENTENCE_ID": "-1XUnputrgk_8",
+        "SENTENCE_NAME": "-1XUnputrgk_8-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "A lot of women, a lot of you out there.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1XUnputrgk_8-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.88
+    },
+    {
+        "SENTENCE_ID": "-1fUFbij2s0_29",
+        "SENTENCE_NAME": "-1fUFbij2s0_29-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "You would do that for a little while.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1fUFbij2s0_29-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.29
+    },
+    {
+        "SENTENCE_ID": "-1fUFbij2s0_32",
+        "SENTENCE_NAME": "-1fUFbij2s0_32-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "You see chefs do this.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1fUFbij2s0_32-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-1fUFbij2s0_33",
+        "SENTENCE_NAME": "-1fUFbij2s0_33-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "That's just refining the edge.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1fUFbij2s0_33-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.92
+    },
+    {
+        "SENTENCE_ID": "-1rM0t5FMiE_0",
+        "SENTENCE_NAME": "-1rM0t5FMiE_0-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "We're doing the scissoring now.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1rM0t5FMiE_0-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.0
+    },
+    {
+        "SENTENCE_ID": "-1rM0t5FMiE_8",
+        "SENTENCE_NAME": "-1rM0t5FMiE_8-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "It makes for a nice scissor leg.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-1rM0t5FMiE_8-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.88
+    },
+    {
+        "SENTENCE_ID": "-23PZTqtDBw_0",
+        "SENTENCE_NAME": "-23PZTqtDBw_0-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Off-season training for football.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-23PZTqtDBw_0-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.29
+    },
+    {
+        "SENTENCE_ID": "-23PZTqtDBw_7",
+        "SENTENCE_NAME": "-23PZTqtDBw_7-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "So touch and full extension out.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-23PZTqtDBw_7-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.67
+    },
+    {
+        "SENTENCE_ID": "-3bw4dQEyF8_8",
+        "SENTENCE_NAME": "-3bw4dQEyF8_8-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Stay safe, and we'll see you next time.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-3bw4dQEyF8_8-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.54
+    },
+    {
+        "SENTENCE_ID": "-3sFcDBFxc8_0",
+        "SENTENCE_NAME": "-3sFcDBFxc8_0-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "All right, we're ready to start our fire.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-3sFcDBFxc8_0-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.42
+    },
+    {
+        "SENTENCE_ID": "-3sFcDBFxc8_11",
+        "SENTENCE_NAME": "-3sFcDBFxc8_11-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Or even using matches and throwing those.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-3sFcDBFxc8_11-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.54
+    },
+    {
+        "SENTENCE_ID": "-4Sl9mPOlfA_5",
+        "SENTENCE_NAME": "-4Sl9mPOlfA_5-3-rgb_front",
+        "SENTENCE_DESCRIPTION": "And then we'll brush it out a little bit.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-4Sl9mPOlfA_5-3-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-4Sl9mPOlfA_6",
+        "SENTENCE_NAME": "-4Sl9mPOlfA_6-3-rgb_front",
+        "SENTENCE_DESCRIPTION": "That looks pretty good.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-4Sl9mPOlfA_6-3-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.71
+    },
+    {
+        "SENTENCE_ID": "-6PULg1jlpc_2",
+        "SENTENCE_NAME": "-6PULg1jlpc_2-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "How do I get rid of this makeup?\"",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6PULg1jlpc_2-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.17
+    },
+    {
+        "SENTENCE_ID": "-6PULg1jlpc_3",
+        "SENTENCE_NAME": "-6PULg1jlpc_3-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Well, today I'm going to show you how.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6PULg1jlpc_3-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.84
+    },
+    {
+        "SENTENCE_ID": "-6PULg1jlpc_9",
+        "SENTENCE_NAME": "-6PULg1jlpc_9-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Removing makeup is vital.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6PULg1jlpc_9-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.84
+    },
+    {
+        "SENTENCE_ID": "-6PZkp-zC78_1",
+        "SENTENCE_NAME": "-6PZkp-zC78_1-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "Now this is a petunia variety called Wave.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6PZkp-zC78_1-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.92
+    },
+    {
+        "SENTENCE_ID": "-6YYqn8lplg_5",
+        "SENTENCE_NAME": "-6YYqn8lplg_5-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "That's where we're going to get all of our momentum from.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6YYqn8lplg_5-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.71
+    },
+    {
+        "SENTENCE_ID": "-6vHGMCTYyI_10",
+        "SENTENCE_NAME": "-6vHGMCTYyI_10-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "What did you get out of that?",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6vHGMCTYyI_10-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.09
+    },
+    {
+        "SENTENCE_ID": "-6vHGMCTYyI_6",
+        "SENTENCE_NAME": "-6vHGMCTYyI_6-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "What did you gain from it?",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-6vHGMCTYyI_6-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.17
+    },
+    {
+        "SENTENCE_ID": "-70D86eMmIc_10",
+        "SENTENCE_NAME": "-70D86eMmIc_10-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "There's not a lot that originate from the East Coast.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-70D86eMmIc_10-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.79
+    },
+    {
+        "SENTENCE_ID": "-70D86eMmIc_14",
+        "SENTENCE_NAME": "-70D86eMmIc_14-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "They're beautiful, beautiful plants.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-70D86eMmIc_14-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.46
+    },
+    {
+        "SENTENCE_ID": "-7BtY3iQIdo_12",
+        "SENTENCE_NAME": "-7BtY3iQIdo_12-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Squeeze, release and pull up.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7BtY3iQIdo_12-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.71
+    },
+    {
+        "SENTENCE_ID": "-7BtY3iQIdo_2",
+        "SENTENCE_NAME": "-7BtY3iQIdo_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "It's just a regular writing tip.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7BtY3iQIdo_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.08
+    },
+    {
+        "SENTENCE_ID": "-7BtY3iQIdo_22",
+        "SENTENCE_NAME": "-7BtY3iQIdo_22-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "And, then just a little dot there for the tie.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7BtY3iQIdo_22-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 3.0
+    },
+    {
+        "SENTENCE_ID": "-7BtY3iQIdo_3",
+        "SENTENCE_NAME": "-7BtY3iQIdo_3-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "And, how you make pearls is you want to twist your bag.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7BtY3iQIdo_3-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.79
+    },
+    {
+        "SENTENCE_ID": "-7BtY3iQIdo_9",
+        "SENTENCE_NAME": "-7BtY3iQIdo_9-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Because, you'll end up with something that looks like that.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7BtY3iQIdo_9-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 3.0
+    },
+    {
+        "SENTENCE_ID": "-7H7ZHO_4Ao_6",
+        "SENTENCE_NAME": "-7H7ZHO_4Ao_6-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "The same principle applies to children.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7H7ZHO_4Ao_6-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.17
+    },
+    {
+        "SENTENCE_ID": "-7ZqO3skAxk_4",
+        "SENTENCE_NAME": "-7ZqO3skAxk_4-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "So once the words are out there they are out there.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-7ZqO3skAxk_4-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.79
+    },
+    {
+        "SENTENCE_ID": "-8AYi1n0UWo_2",
+        "SENTENCE_NAME": "-8AYi1n0UWo_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "There could be a couple of variances of this one.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8AYi1n0UWo_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.17
+    },
+    {
+        "SENTENCE_ID": "-8EJ9aomFAc_5",
+        "SENTENCE_NAME": "-8EJ9aomFAc_5-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "You can get rid of all of that old wrapping paper.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8EJ9aomFAc_5-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.25
+    },
+    {
+        "SENTENCE_ID": "-8L6L9fFWK8_1",
+        "SENTENCE_NAME": "-8L6L9fFWK8_1-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "In this segment we're going to talk about consecutive rolls.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8L6L9fFWK8_1-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.71
+    },
+    {
+        "SENTENCE_ID": "-8j9K3T5lkw_1",
+        "SENTENCE_NAME": "-8j9K3T5lkw_1-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "This is Dr. Chris Mango, here in New York City.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8j9K3T5lkw_1-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.25
+    },
+    {
+        "SENTENCE_ID": "-8j9K3T5lkw_3",
+        "SENTENCE_NAME": "-8j9K3T5lkw_3-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "The next muscle we're going to be taking a look at is the latissimus dorsi.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8j9K3T5lkw_3-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "-8tIt1vEinQ_4",
+        "SENTENCE_NAME": "-8tIt1vEinQ_4-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "At one time I had an air brush on every color.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8tIt1vEinQ_4-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.42
+    },
+    {
+        "SENTENCE_ID": "-8tIt1vEinQ_6",
+        "SENTENCE_NAME": "-8tIt1vEinQ_6-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Just take a color, say I've got brown.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8tIt1vEinQ_6-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.25
+    },
+    {
+        "SENTENCE_ID": "-8uwu59w8QE_2",
+        "SENTENCE_NAME": "-8uwu59w8QE_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "In this segment, I am going to touch on vending.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8uwu59w8QE_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 3.0
+    },
+    {
+        "SENTENCE_ID": "-8uwu59w8QE_3",
+        "SENTENCE_NAME": "-8uwu59w8QE_3-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "How to work with vendors and what they are all about.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-8uwu59w8QE_3-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.54
+    },
+    {
+        "SENTENCE_ID": "-916rCqIrfY_1",
+        "SENTENCE_NAME": "-916rCqIrfY_1-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "I don't kick people in the head standing up.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-916rCqIrfY_1-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-916rCqIrfY_3",
+        "SENTENCE_NAME": "-916rCqIrfY_3-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "A side kick is a good technique.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-916rCqIrfY_3-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.42
+    },
+    {
+        "SENTENCE_ID": "-916rCqIrfY_6",
+        "SENTENCE_NAME": "-916rCqIrfY_6-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "One, two.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-916rCqIrfY_6-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.0
+    },
+    {
+        "SENTENCE_ID": "-96cWDhR4hc_11",
+        "SENTENCE_NAME": "-96cWDhR4hc_11-5-rgb_front",
+        "SENTENCE_DESCRIPTION": "You don't notice them as much.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-96cWDhR4hc_11-5-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.54
+    },
+    {
+        "SENTENCE_ID": "-9D6kP1TgbY_1",
+        "SENTENCE_NAME": "-9D6kP1TgbY_1-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "This is our perfect eye look for Goth.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9D6kP1TgbY_1-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.21
+    },
+    {
+        "SENTENCE_ID": "-9D6kP1TgbY_4",
+        "SENTENCE_NAME": "-9D6kP1TgbY_4-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "They're nicely shaped, but they're pretty light.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9D6kP1TgbY_4-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.38
+    },
+    {
+        "SENTENCE_ID": "-9D6kP1TgbY_9",
+        "SENTENCE_NAME": "-9D6kP1TgbY_9-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "I'm just going to fill in her natural brow line.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9D6kP1TgbY_9-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.67
+    },
+    {
+        "SENTENCE_ID": "-9GV_-VRpt8_2",
+        "SENTENCE_NAME": "-9GV_-VRpt8_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "If Kyle steps up to the line right here and gets himself ready.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9GV_-VRpt8_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.79
+    },
+    {
+        "SENTENCE_ID": "-9GV_-VRpt8_9",
+        "SENTENCE_NAME": "-9GV_-VRpt8_9-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "You never want to end up with the ball up here.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9GV_-VRpt8_9-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.33
+    },
+    {
+        "SENTENCE_ID": "-9Kic0QsCYs_2",
+        "SENTENCE_NAME": "-9Kic0QsCYs_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "I'm the owner and chef of Kashmir Indian Restaurant in Budapest.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9Kic0QsCYs_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "-9Kic0QsCYs_4",
+        "SENTENCE_NAME": "-9Kic0QsCYs_4-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "The dish now we're going to be preparing is called paneer masala.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9Kic0QsCYs_4-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 3.0
+    },
+    {
+        "SENTENCE_ID": "-9KqRMBAAsA_9",
+        "SENTENCE_NAME": "-9KqRMBAAsA_9-3-rgb_front",
+        "SENTENCE_DESCRIPTION": "Plug it in and you're ready to go.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9KqRMBAAsA_9-3-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.42
+    },
+    {
+        "SENTENCE_ID": "-9TmNCFEtDo_8",
+        "SENTENCE_NAME": "-9TmNCFEtDo_8-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "That is the mascara brush and that's how you use it.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9TmNCFEtDo_8-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.38
+    },
+    {
+        "SENTENCE_ID": "-9nBmSvp2Co_1",
+        "SENTENCE_NAME": "-9nBmSvp2Co_1-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "It was in there about twenty five minutes or so.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9nBmSvp2Co_1-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-9nBmSvp2Co_10",
+        "SENTENCE_NAME": "-9nBmSvp2Co_10-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Tastes dearly, ooh, okay.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9nBmSvp2Co_10-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.17
+    },
+    {
+        "SENTENCE_ID": "-9nBmSvp2Co_2",
+        "SENTENCE_NAME": "-9nBmSvp2Co_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "And you can pop it in the freezer if you need to, that's okay too.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9nBmSvp2Co_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.29
+    },
+    {
+        "SENTENCE_ID": "-9nBmSvp2Co_3",
+        "SENTENCE_NAME": "-9nBmSvp2Co_3-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "You'll see that it's not even.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9nBmSvp2Co_3-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.25
+    },
+    {
+        "SENTENCE_ID": "-9nBmSvp2Co_7",
+        "SENTENCE_NAME": "-9nBmSvp2Co_7-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "I personally don't care what my fudge looks like as long as it tastes good.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9nBmSvp2Co_7-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.71
+    },
+    {
+        "SENTENCE_ID": "-9zB8cv_WJk_4",
+        "SENTENCE_NAME": "-9zB8cv_WJk_4-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "So you may have to replace it with something close to it.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-9zB8cv_WJk_4-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.33
+    },
+    {
+        "SENTENCE_ID": "-AFID_P6YU0_1",
+        "SENTENCE_NAME": "-AFID_P6YU0_1-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "In this series, we're learning all about fall-blooming flower bulbs.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AFID_P6YU0_1-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.62
+    },
+    {
+        "SENTENCE_ID": "-AFID_P6YU0_15",
+        "SENTENCE_NAME": "-AFID_P6YU0_15-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "And it'll do well in drought conditions.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AFID_P6YU0_15-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.25
+    },
+    {
+        "SENTENCE_ID": "-AFID_P6YU0_7",
+        "SENTENCE_NAME": "-AFID_P6YU0_7-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "And they're easy bulb to recognize and easy bulb to plant.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AFID_P6YU0_7-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.96
+    },
+    {
+        "SENTENCE_ID": "-AKdG2AyDW4_12",
+        "SENTENCE_NAME": "-AKdG2AyDW4_12-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "But that also means the paint could be a little thin.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AKdG2AyDW4_12-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.12
+    },
+    {
+        "SENTENCE_ID": "-AKdG2AyDW4_14",
+        "SENTENCE_NAME": "-AKdG2AyDW4_14-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Be prepared to have to put on multiple coats.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AKdG2AyDW4_14-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.38
+    },
+    {
+        "SENTENCE_ID": "-AKdG2AyDW4_2",
+        "SENTENCE_NAME": "-AKdG2AyDW4_2-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "I generally recommend being 2 to 3 inches wide.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AKdG2AyDW4_2-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.29
+    },
+    {
+        "SENTENCE_ID": "-AKdG2AyDW4_4",
+        "SENTENCE_NAME": "-AKdG2AyDW4_4-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Horizon lines don't look like this.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AKdG2AyDW4_4-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.17
+    },
+    {
+        "SENTENCE_ID": "-AKdG2AyDW4_8",
+        "SENTENCE_NAME": "-AKdG2AyDW4_8-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "See like this nice rise and fall I'm getting?",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AKdG2AyDW4_8-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.12
+    },
+    {
+        "SENTENCE_ID": "-AVtT8Kl-fs_21",
+        "SENTENCE_NAME": "-AVtT8Kl-fs_21-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Now we have completed two parts of the lid.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AVtT8Kl-fs_21-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.88
+    },
+    {
+        "SENTENCE_ID": "-AZVqXtWGg0_10",
+        "SENTENCE_NAME": "-AZVqXtWGg0_10-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "There's no rush when you're using this blade.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AZVqXtWGg0_10-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.42
+    },
+    {
+        "SENTENCE_ID": "-AZVqXtWGg0_12",
+        "SENTENCE_NAME": "-AZVqXtWGg0_12-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "And I'll just do the same thing, I just set the ruler to the right.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AZVqXtWGg0_12-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.71
+    },
+    {
+        "SENTENCE_ID": "-AZVqXtWGg0_20",
+        "SENTENCE_NAME": "-AZVqXtWGg0_20-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Then you can see that it separated on the second score.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AZVqXtWGg0_20-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "-AZVqXtWGg0_25",
+        "SENTENCE_NAME": "-AZVqXtWGg0_25-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "So now this is the actual piece that I'm going to use.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AZVqXtWGg0_25-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.54
+    },
+    {
+        "SENTENCE_ID": "-AZVqXtWGg0_26",
+        "SENTENCE_NAME": "-AZVqXtWGg0_26-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "So I'm going to set that there.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-AZVqXtWGg0_26-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.42
+    },
+    {
+        "SENTENCE_ID": "-Ajh5HDqsi4_5",
+        "SENTENCE_NAME": "-Ajh5HDqsi4_5-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "There are several reasons why it is so critical.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-Ajh5HDqsi4_5-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.5
+    },
+    {
+        "SENTENCE_ID": "-B0GueDqaoY_11",
+        "SENTENCE_NAME": "-B0GueDqaoY_11-8-rgb_front",
+        "SENTENCE_DESCRIPTION": "Anything, a scene you might see, take a photograph of it.",
+        "SENTENCE_FILE_PATH": "../../Dataset/train/videos/-B0GueDqaoY_11-8-rgb_front.mp4",
+        "SENTENCE_DURATION": 2.58
+    }
+]

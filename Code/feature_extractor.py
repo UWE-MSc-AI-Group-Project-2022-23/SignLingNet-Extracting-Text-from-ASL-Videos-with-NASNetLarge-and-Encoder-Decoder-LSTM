@@ -19,7 +19,7 @@ class NASNetFeatureExtractor:
             outputs=full_model.get_layer("normal_concat_18").output,
         )
 
-    def extract_from_frame(self, frame: np.ndarray) -> List[float]:
+    def extract_from_frame(self, frame):
         """
         Extract features from an image frame.
 
@@ -29,11 +29,10 @@ class NASNetFeatureExtractor:
         Returns:
             List[float]: Feature representation of the image as a 1D list.
         """
-        # Expand dimensions of the frame to make it suitable for the model input
-        x = np.expand_dims(frame, axis=0)
-
         # Extract features using the NASNetLarge model
-        features = self.model.predict(x)
+        features = self.model.predict(frame)
+        
+        features = features[0]
 
         # Flatten the features and convert them to a 1D list
-        return features.flatten().tolist()
+        return features

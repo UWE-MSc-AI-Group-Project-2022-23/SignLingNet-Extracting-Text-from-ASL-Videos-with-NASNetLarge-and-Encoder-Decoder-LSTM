@@ -7,6 +7,7 @@ import keras.applications.nasnet as nasnet
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from typing import Optional, List
+from numpy import asarray
 
 
 class DataPreprocessor:
@@ -113,6 +114,8 @@ class DataPreprocessor:
                 processed_frame = self.grey_scale(processed_frame)
 
             else:
+                processed_frame = asarray(processed_frame)
+                processed_frame = np.expand_dims(processed_frame, axis=0)
                 processed_frame = nasnet.preprocess_input(processed_frame)
 
             return processed_frame
