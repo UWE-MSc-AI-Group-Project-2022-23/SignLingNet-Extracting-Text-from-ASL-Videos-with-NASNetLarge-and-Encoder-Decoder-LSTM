@@ -116,6 +116,17 @@ class MLFlow:
                 # Release the video capture
                 cap.release()
 
+                max_frames = 71
+
+                if len(processed_frames) != max_frames:
+                    num_of_frames_to_be_added = max_frames - len(processed_frames)
+                    empty_frame = np.zeros((331, 331, 3), np.uint8)
+                    empty_processed_frame = self.data_preprocessor.process_frame(
+                        empty_frame, step
+                    )
+                    for _ in range(num_of_frames_to_be_added):
+                        processed_frames.append(empty_processed_frame)
+
                 for frame in processed_frames:
 
                     features = self.feature_extractor.extract_from_frame(processed_frame)
