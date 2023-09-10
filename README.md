@@ -1,1 +1,1 @@
-# Real-Time-Multilingual-Sign-Language-Translation-into-Text
+# SignLingNet: Extracting Text from ASL Videos with NASNetLarge and Encoder-Decoder LSTM
