@@ -1,6 +1,7 @@
 import cv2
 import os
 import pickle
+import string
 import numpy as np
 import keras.applications.nasnet as nasnet
 
@@ -367,6 +368,11 @@ class DataPreprocessor:
             )
 
         try:
+            # Add <START> and <END> tokens to each sentence
+            input_sentences = [
+                "<START> " + self.clean_text(sentence) + " <END>" for sentence in input_sentences
+            ]
+
             # Instantiate a Tokenizer
             tokenizer = Tokenizer(num_words=max_vocab_size, oov_token="<UNK>")
 
@@ -382,18 +388,15 @@ class DataPreprocessor:
             # Pad sequences
             sequences = pad_sequences(sequences, maxlen=max_seq_length, padding="post")
 
-            # Create target sequences
-            targets = np.zeros_like(sequences)
-            targets[:, :-1] = sequences[:, 1:]
-
-            # Create start token for decoder input
-            start_tokens = np.zeros_like(sequences[:, :1])
-            decoder_inputs = np.concatenate([start_tokens, sequences[:, :-1]], axis=1)
-
             # Save the tokenizer for later use
             output_tokenizer_file = os.path.join(output_folder, "tokenizer.pickle")
             with open(output_tokenizer_file, "wb") as handle:
                 pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+            # Save max_seq_length for later use
+            max_seq_length_file = os.path.join(output_folder, "max_seq_length.pkl")
+            with open(max_seq_length_file, "wb") as f:
+                pickle.dump(max_seq_length, f)
 
             return sequences
 
@@ -406,3 +409,12 @@ class DataPreprocessor:
             # Handle any other unexpected exception
             print(f"An error occurred during sentence preprocessing: {str(e)}")
             return None
+        
+    def clean_text(self, text: str) -> str:
+        # Convert to lowercase
+        text = text.lower()
+        
+        # Remove punctuation
+        text = ''.join([char for char in text if char not in string.punctuation])
+        
+        return text

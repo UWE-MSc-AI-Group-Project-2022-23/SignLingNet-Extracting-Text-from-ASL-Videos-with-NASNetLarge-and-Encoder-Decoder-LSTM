@@ -1,226 +1,179 @@
-import cv2
-import os
-import math
 import json
-import random
-import pandas as pd
+import os
+import cv2
+import pickle
+
 import numpy as np
 
-from data_preprocessor import DataPreprocessor
-from feature_extractor import NASNetFeatureExtractor
+from sklearn.model_selection import train_test_split
+from preprocess_extract import PreprocessorAndFeatureExtractor
+from encoder_decoder_lstm import EncoderDecoderLSTM
 
 
 class MLFlow:
-    """
-    A class for processing videos, applying data preprocessing, and extracting features.
-    """
-
-    def __init__(
-        self,
-        input_json_file: str,
-        output_folder: str,
-        resize_width: int = 331,
-        resize_height: int = 331,
-        processing_steps: list = None,
-    ):
-        """
-        Initialize the MLFlow object.
-
-        Args:
-            input_json_file (str): Path to the JSON file containing video information.
-            output_folder (str): Folder where the extracted features will be saved.
-            resize_width (int, optional): Width to which the video frames will be resized during preprocessing. Default is 331.
-            resize_height (int, optional): Height to which the video frames will be resized during preprocessing. Default is 331.
-            processing_steps (list, optional): List of data preprocessing steps. Default is None.
-        """
-        # Store the input parameters in instance variables
-        self.input_json_file = input_json_file
+    def __init__(self, output_folder, train_data_file_path, videos_file_path):
         self.output_folder = output_folder
-        self.processing_steps = processing_steps
+        self.train_data_file_path = train_data_file_path
+        self.videos_file_path = videos_file_path
+        self.encoder_model = None
+        self.decoder_model = None
+        self.tokenizer = None
+        self.max_seq_length = None
+        self.preprocessed_data = None
 
-        # Create a DataPreprocessor object for frame preprocessing
-        self.data_preprocessor = DataPreprocessor(resize_width, resize_height)
+    def get_video_fps(self, video_file_path):
 
-        # Create a NASNetFeatureExtractor object for feature extraction
-        self.feature_extractor = NASNetFeatureExtractor()
+        cap = cv2.VideoCapture(video_file_path)
 
-        # Initialize an empty dictionary to store the output directories for each processing step
-        self.output_dirs = {}
+        fps = cap.get(cv2.CAP_PROP_FPS) 
 
-    def process_video_and_extract_features(self):
-        """
-        Process videos, apply data preprocessing, and extract features from frames.
-        """
-        try:
-            # Create output directories
-            self._create_output_directories()
+        cap.release()
 
-            # Load video metadata from the JSON file
-            with open(self.input_json_file, "r") as json_file:
-                data = json.load(json_file)
+        return fps
+    
+    def prepare_data(self):
+        with open(self.train_data_file_path, 'r') as json_file:
+            data = json.load(json_file)
 
-            # Preprocess sentences related to the videos
-            preprocessed_sentences = self.process_labels(data)
+        filtered_data = []
 
-            # Calculate the number of videos per step (if processing_steps provided)
-            if self.processing_steps:
-                num_videos = len(data)
-                num_steps = len(self.processing_steps)
-                videos_per_step = math.ceil(num_videos / num_steps)
+        for i, item in enumerate(data):
+            if 2.0 <= item['SENTENCE_DURATION'] < 2.1:
+                fps = self.get_video_fps(os.path.join(self.videos_file_path, item['SENTENCE_NAME'] + '.mp4'))
+                if fps == 24:
+                    filtered_data.append(item)
 
-                # Shuffle the processing steps to randomize video processing order
-                random.shuffle(self.processing_steps)
+        filtered_data = filtered_data[:20]
 
-            vectors_df = pd.DataFrame(columns=["video_name", "features", "labels"])
+        print(len(filtered_data))
 
-            # Process videos in the input folder
-            for i, file in enumerate(data):
-                video_path = file["SENTENCE_FILE_PATH"]
-                video_name = file["SENTENCE_NAME"]
-                video_description = preprocessed_sentences[video_name]
+        json_output_file_path = os.path.join(self.output_folder, 'train_data_to_be_extracted.json')
 
-                # Determine the processing step and output directory for the video
-                if self.processing_steps is None:
-                    step = None
-                    output_dir = self.output_folder
-                else:
-                    step_idx = i // videos_per_step
-                    step = self.processing_steps[step_idx]
-                    output_dir = self.output_dirs[step_idx]
+        with open(json_output_file_path, 'w') as labels_file:
+            json.dump(filtered_data, labels_file, indent=4)
 
-                # Open the input video using OpenCV
-                cap = cv2.VideoCapture(video_path)
+        processor = PreprocessorAndFeatureExtractor(json_output_file_path, self.output_folder)
+        processor.process_video_and_extract_features()
 
-                path = os.path.join(output_dir, 'features', video_name)
+        preprocessed_file_path = os.path.join(self.output_folder, 'preprocessed_sentences.json')
+        with open(preprocessed_file_path, 'r') as f:
+            preprocessed_data = json.load(f)
 
-                # Process frames in the video
-                video_features = []
-                processed_frames = []
-                while cap.isOpened():
-                    ret, frame = cap.read()
-                    if not ret:
-                        break
+        # Load the saved tokenizer to use its vocabulary size
+        tokenizer_file_path = os.path.join(self.output_folder, 'tokenizer.pickle')
+        with open(tokenizer_file_path, 'rb') as handle:
+            self.tokenizer = pickle.load(handle)
+        vocab_size = len(self.tokenizer.word_index) + 1
 
-                    # Process the frame and extract features
-                    try:
-                        processed_frame = self.data_preprocessor.process_frame(
-                            frame, step
-                        )
+        # Load max_seq_length
+        max_seq_length_file_path = os.path.join(self.output_folder, 'max_seq_length.pkl')
+        with open(max_seq_length_file_path, 'rb') as f:
+            self.max_seq_length = pickle.load(f)
 
-                        processed_frames.append(processed_frame)
-                        
+        # Extract the preprocessed sequences directly
+        Y_data = [item['PREPROCESSED_SENTENCE'] for item in preprocessed_data]
 
-                    except Exception as e:
-                        print(f"Error occurred during frame processing: {str(e)}")
+        # Adjust for decoder input and target
+        decoder_input_data = np.array(Y_data)[:, :-1]
+        decoder_target_data = np.array(Y_data)[:, 1:]
 
-                # Release the video capture
-                cap.release()
+        # Load video features from the directory
+        feature_dir = os.path.join(self.output_folder, 'features')
 
-                max_frames = 71
+        video_features = []
+        for item in preprocessed_data:
+            file_path = os.path.join(feature_dir, f"{item['SENTENCE_NAME']}.json")
+            try:
+                with open(file_path, 'r') as f:
+                    video_features.append(json.load(f))
+                print(len(video_features))
+            except Exception as e:
+                print(f"[ERROR] Failed to load: {file_path}. Error: {e}")
 
-                if len(processed_frames) != max_frames:
-                    num_of_frames_to_be_added = max_frames - len(processed_frames)
-                    empty_frame = np.zeros((331, 331, 3), np.uint8)
-                    empty_processed_frame = self.data_preprocessor.process_frame(
-                        empty_frame, step
-                    )
-                    for _ in range(num_of_frames_to_be_added):
-                        processed_frames.append(empty_processed_frame)
+        max_frames = max([len(features) for features in video_features])
+        feature_length = len(video_features[0]['frame_0'][0][0])
 
-                for frame in processed_frames:
+        # Prepare training data
+        X_data = np.zeros((len(video_features), max_frames, feature_length))
+        for i, features in enumerate(video_features):
+            sorted_frames = sorted(features.items(), key=lambda x: x[0])
+            for j, (_, frame_data) in enumerate(sorted_frames):
+                X_data[i, j, :] = frame_data[0][0]
 
-                    features = self.feature_extractor.extract_from_frame(processed_frame)
+        X_train, X_val, decoder_input_train, decoder_input_val, decoder_target_train, decoder_target_val = train_test_split(X_data, decoder_input_data, decoder_target_data, test_size=0.2, random_state=42)
 
-                    video_features.append(features)
+        return preprocessed_data, feature_length, vocab_size, X_train, decoder_input_train, decoder_target_train, X_val, decoder_input_val, decoder_target_val
+    
+    def train(self):
 
-                # Append to feature_vectors_df and labels_df using .loc
-                vectors_df.loc[len(vectors_df)] = {
-                    "video_name": video_name,
-                    "features": video_features,
-                    "labels": video_description
-                }
-                print(path)
-                np.save(path, video_features)
+        preprocessed_data, feature_length, vocab_size, X_train, decoder_input_train, decoder_target_train, X_val, decoder_input_val, decoder_target_val = self.prepare_data()
 
-            # Video processing completed
-            print("Video processing completed.")
+        encoder_decoder_lstm = EncoderDecoderLSTM(feature_length=feature_length, vocab_size=vocab_size, embedding_dim=128, units=128, dropout_rate=0.5)
+        encoder_decoder_lstm.construct_model()
+        encoder_decoder_lstm.compile(learning_rate=0.003)
+        encoder_decoder_lstm.train(X_train, decoder_input_train, decoder_target_train, X_val, decoder_input_val, decoder_target_val, batch_size=32, epochs=1000, patience=100)
 
-            return vectors_df
+        self.encoder_model = encoder_decoder_lstm.inference_encoder_model()
+        self.decoder_model = encoder_decoder_lstm.inference_decoder_model()
 
-        except Exception as e:
-            # Handle any errors during video processing
-            print(f"Error occurred during video processing: {str(e)}")
-            raise
+        return X_train, X_val, decoder_input_val, decoder_target_val, preprocessed_data
 
-    def process_labels(self, data: list) -> dict:
-        """
-        Preprocesses a list of sentences and returns a dictionary mapping sentence names to their preprocessed sequences.
+    # Decoding sequence function
+    def decode_sequence(self, input_seq, video_name):
+        # Encode the input sequence to get the internal state vectors.
+        states_value = self.encoder_model.predict(input_seq)
+        
+        # Generate an empty target sequence of length 1 with only the start token.
+        target_seq = np.array(self.tokenizer.texts_to_sequences(['start'])).reshape(1, 1)
+        
+        # Display the video name
+        print(f"Video: {video_name}")
+        
+        # Sampling loop for a batch of sequences
+        stop_condition = False
+        decoded_sentence = ''
+        while not stop_condition:
+            output_tokens, h, c = self.decoder_model.predict([target_seq] + states_value)
+            
+            # Sample the next token
+            sampled_token_index = np.argmax(output_tokens[0, -1, :])
+            sampled_word = self.tokenizer.index_word.get(sampled_token_index, '')
+            decoded_sentence += ' ' + sampled_word
+            
+            # Exit condition: either hit max length or find the end token.
+            if (sampled_word == 'end' or len(decoded_sentence.split()) > self.max_seq_length):
+                stop_condition = True
 
-        Args:
-            data (list): A list of dictionaries, where each dictionary contains a 'SENTENCE_DESCRIPTION' and 'SENTENCE_NAME' key-value pair.
+            # Update the target sequence to the last predicted token.
+            target_seq = np.array([[sampled_token_index]])
+            
+            # Update states for the next time step
+            states_value = [h, c]
 
-        Returns:
-            dict: A dictionary where sentence names are keys, and their corresponding preprocessed sequences (as integer lists) are values.
-        """
-        try:
-            # Extract 'SENTENCE_DESCRIPTION' and 'SENTENCE_NAME' lists from the data
-            sentences = [item["SENTENCE_DESCRIPTION"] for item in data]
-            sentence_names = [item["SENTENCE_NAME"] for item in data]
+        return video_name, f"{decoded_sentence.replace(' end', '')}" 
+    
+if __name__=='__main__':
+    mlflow = MLFlow('../Data/train', '../Data/train.json', '../../Dataset/train/videos')
 
-            # Preprocess sentences using the data_preprocessor object
-            sequences = self.data_preprocessor.process_labels(
-                sentences, self.output_folder
-            )
+    X_train, X_val, decoder_input_val, decoder_target_val, preprocessed_data = mlflow.train()
 
-            # Convert sequences to lists of integers
-            preprocessed_sentences = [list(map(int, seq)) for seq in sequences]
-
-            # Create a dictionary to store the preprocessed data
-            preprocessed_data = {}
-            for sentence_name, pre_seq in zip(sentence_names, preprocessed_sentences):
-                preprocessed_data[sentence_name] = pre_seq
-
-            return preprocessed_data
-
-        except KeyError as e:
-            # Handle KeyError if 'SENTENCE_DESCRIPTION' or 'SENTENCE_NAME' keys are missing
-            raise ValueError(
-                "Invalid data format. Each dictionary in 'data' must have 'SENTENCE_DESCRIPTION' and 'SENTENCE_NAME' keys."
-            ) from e
-
-        except AttributeError as e:
-            # Handle AttributeError if 'data_preprocessor' object doesn't have 'process_labels' method
-            raise AttributeError(
-                "'data_preprocessor' object must have 'process_labels' method."
-            ) from e
-
-        except Exception as e:
-            # Handle any other unexpected exception
-            raise RuntimeError(
-                "An error occurred during sentence preprocessing."
-            ) from e
-
-    def _create_output_directories(self):
-        """
-        Create output directories for each processing step or the main output folder.
-
-        This method creates directories for each processing step in 'self.processing_steps' and stores their paths
-        in the 'self.output_dirs' dictionary. If 'self.processing_steps' is empty, it creates the main output folder.
-        """
-        try:
-            if self.processing_steps:
-                # Create directories for each processing step
-                for step in self.processing_steps:
-                    step_dir = os.path.join(self.output_folder, step)
-                    os.makedirs(step_dir, exist_ok=True)
-                    self.output_dirs[step] = step_dir
-            else:
-                # Create the main output folder if no processing steps are specified
-                os.makedirs(self.output_folder, exist_ok=True)
-                features_path = os.path.join(self.output_folder, 'features')
-                os.makedirs(features_path, exist_ok=True)
-        except OSError as e:
-            # Handle OSError (e.g., file exists, permission denied) during directory creation
-            raise OSError(
-                f"Error occurred while creating output directories: {str(e)}"
-            ) from e
+    # Test
+    video_names = []
+    actual_sentences = []
+    predicted_sentences = []
+    for i in range(len(X_train)):
+        sample_index = i
+        input_seq = X_train[sample_index:sample_index+1]
+        video_name = preprocessed_data[sample_index]['SENTENCE_NAME']
+        actual_sentence = preprocessed_data[sample_index]['SENTENCE_DESCRIPTION']
+        video_name, predicted_sentence = mlflow.decode_sequence(input_seq, video_name)
+        video_names.append(video_name)
+        actual_sentences.append(actual_sentence)
+        predicted_sentences.append(predicted_sentence.replace('start', '').strip())
+    
+    with open('output.txt', 'w') as f:
+        for i in range(len(X_train)):
+            f.write('Video: ' + str(video_names[i]) + '\n')
+            f.write('Actual: ' + str(actual_sentences[i]) + '\n')
+            f.write('Predicted: ' + str(predicted_sentences[i]) + '\n')
+            f.write('\n')

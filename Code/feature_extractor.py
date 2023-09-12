@@ -1,8 +1,5 @@
-import numpy as np
-
 from keras.applications.nasnet import NASNetLarge
 from keras.models import Model
-from typing import List
 
 
 class NASNetFeatureExtractor:
@@ -35,4 +32,4 @@ class NASNetFeatureExtractor:
         features = features[0]
 
         # Flatten the features and convert them to a 1D list
-        return features
+        return features.tolist()
